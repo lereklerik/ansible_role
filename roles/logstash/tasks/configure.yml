@@ -1,0 +1,14 @@
+---
+- name: Configure Logstash
+  become: true
+  template:
+    src: logstash-simple.conf.j2
+    mode: 0644
+    dest: /etc/logstash/logstash.conf
+  notify: restart Logstash
+- name: Run logstash
+  become: true
+  command:
+    cmd: /usr/share/logstash/bin/logstash -f /etc/logstash/logstash.conf
+    chdir: /usr/share/logstash/bin
+  register: logstash_modules

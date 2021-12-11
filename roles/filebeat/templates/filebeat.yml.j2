@@ -1,0 +1,13 @@
+{% if ansible_distribution == "CentOS" %}
+output.elasticsearch:
+  hosts: ["http://{{ hostvars['el-centos']['ansible_facts']['default_ipv4']['address'] }}:9200"]
+setup.kibana:
+  host: "http://{{ hostvars['k-centos']['ansible_facts']['default_ipv4']['address'] }}:5601"
+{% else %}
+output.elasticsearch:
+  hosts: ["http://{{ hostvars['el-deb']['ansible_facts']['default_ipv4']['address'] }}:9200"]
+setup.kibana:
+  host: "http://{{ hostvars['k-deb']['ansible_facts']['default_ipv4']['address'] }}:5601"
+{% endif %}
+
+filebeat.config.modules.path: ${path.config}/modules.d/*.yml

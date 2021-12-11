@@ -1,0 +1,7 @@
+---
+- name: Install Logstash
+  become: true
+  yum:
+    name: "/tmp/logstash-{{ logstash_version }}-x86_64.rpm"
+    state: present
+  notify: restart Logstash
