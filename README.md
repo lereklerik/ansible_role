@@ -33,6 +33,7 @@ Starting galaxy role install process
 ![img.png](netology/img.png)
 
 * Развернула ВМ на `centos 7` в яндексе. `hosts.yml`:
+
 ![img_1.png](netology/img_1.png)
 
 ```shell
@@ -176,6 +177,7 @@ el-deb                     : ok=8    changed=5    unreachable=0    failed=0    s
 elastic                    : ok=7    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0  
 ```
 * Файлы: 
+
 ![img_2.png](netology/img_2.png)
 
 * На примере одного хоста проверим статус сервиса (для `ubuntu` выделила 12Гб оперативки):
@@ -200,16 +202,19 @@ lerekler@el-deb:~$ systemctl status elasticsearch
              └─1482 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
 ```
 -----------------------------------------------------------------------
-### Объединила задания №3-8. Создайте новые роли `kibana`, `filebeat`. На основе `tasks` заполните новые роли, перенесите нужные шаблоны конфигов в `templates`.
-### Объединила задания №9-10. Опишите роли в README.md и выложите в репозитории
+### 3-8. Создайте новые роли `kibana`, `filebeat`. На основе `tasks` заполните новые роли, перенесите нужные шаблоны конфигов в `templates`.
+### 9-10. Опишите роли в README.md и выложите в репозитории
 
 * Создание роли выполняю в таком алгоритме:
   * Раскидываю все задачи и необходимые данные по нужным файлам и каталогам;
   * Выкладываю в репозитории;
   * Изменяю основной `playbook`, тестирую с добавленным ролями 
+----------------------------------------
 * Чтобы не лишать `README.md` читаемого вида, вынесла логи по настройке ролей в отдельные файлы (конечно, после этого они дорабатывались, что отражено в репозитории и измененных версий тегов):
   * _**KIBANA**_ [Лог](netology/kibana/log.md), [README.md](https://github.com/lereklerik/kibana-role#role-name) в репозитории
   * _**FILEBEAT**_ [Лог](netology/filebeat/log.md), [README.md](https://github.com/lereklerik/filebeat-role#role-name) в репозитории
+
+
 * `inventory/hosts.yml` был изменен (удален один хост с `elastic` в блоке `centos`):
 ```yaml
 ---
@@ -224,6 +229,8 @@ debian:
       ansible_host: 51.250.27.202
       ansible_connection: ssh
 ```
+
+-----------------------------------------------------------------------
 
 ### 11. Добавьте roles в `requirements.yml` в playbook.
 
@@ -264,34 +271,46 @@ Starting galaxy role install process
   * [hosts.yml](inventory/elk/hosts.yml)
   * [site.yml](site.yml)
   * По [requirements](requirements.yml) можно увидеть, сколько раз я меняла ту или иную роль. Банально были порой опечатки, их не привожу.
+------------------------------------------------------------------
+* Роли обновляла по тегам командой `ansible-galaxy install -r requirements.yml -p roles --force`
+* `Playbook` запускала командой `ansible-playbook -i inventory/elk/ site.yml &> ansible-playbook<номер лога>.log`
+------------------------------------------------------------------
 * В качестве типичной ошибки (для меня) приведу следующую: в [kibana.yml.j2](roles/kibana/templates/kibana.yml.j2) вместо `elasticsearch.hosts` я писала `centos.hosts` или `debian.hosts`. Ошибка возникала на этапе загрузки `dashboard`:
 ```shell
 "Loading dashboards (Kibana must be running and reachable)"
 ```
 * [Лог](netology/ansible-playbook.log) с примером ошибки
 * Конечно, мне пришлось забежать на сервера и посмотреть, что там с сервисами, ответ был очевидным.
-* Итоговый лог [тут](netology/ansible-playbook4.log)
+-----------------------------------------------------------------
+* Итоговый безошибочный лог [тут](netology/ansible-playbook4.log)
 
+-----------------------------------------------------------------
 #### Картинки:
 
 * Файлы:
+
 ![files](netology/img_8.png)
 
 * Проверяем доступность серверов `centos`:
 * `el-centos`:
+
 ![el-centos:9200](netology/img_3.png)
 
 * `k-centos`:
+
 ![k-centos:5601](netology/img_4.png)
 
 * Проверяем доступность серверов `debian/ubuntu`:
 * `el-deb`:
+
 ![el-deb:9200](netology/img_5.png)
 
 * `k-deb`:
+
 ![k-deb:5601](netology/img_6.png)
 
 * список ВМ
+
 ![hosts](netology/img_7.png)
 
 ------------------------------------------------------
