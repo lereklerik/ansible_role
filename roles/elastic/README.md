@@ -13,7 +13,7 @@ Role Variables
 
 | Variable name | Default | Description |
 |-----------------------|----------|-------------------------|
-| elasticsearch_version | "7.14.0" | Параметр, который определяет какой версии elasticsearch будет установлен |
+| elasticsearch_version | "7.15.2" | Параметр, который определяет какой версии elasticsearch будет установлен |
 
 Example Playbook
 ----------------

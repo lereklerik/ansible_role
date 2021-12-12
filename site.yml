@@ -11,15 +11,15 @@
     - k-deb
   roles:
     - kibana
+- name: Work with logstash-role
+  hosts:
+    - el-centos
+    - el-deb
+  roles:
+    - logstash
 - name: Work with filebeat-role
   hosts:
     - f-centos
     - f-deb
   roles:
     - filebeat
-#- name: Work with logstash-role
-#  hosts:
-#    - el-centos
-#    - el-deb
-#  roles:
-#    - logstash

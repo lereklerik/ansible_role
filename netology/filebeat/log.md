@@ -19,7 +19,7 @@ supported_systems: ['CentOS', 'Ubuntu', 'Debian']
 ```shell
 $ cat defaults/main.yml 
 ---
-filebeat_version: "7.14.0"
+filebeat_version: "7.15.2"
 filebeat_install_type: remote
 ```
 ##### Распределим задачи:

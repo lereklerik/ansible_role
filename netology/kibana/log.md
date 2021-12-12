@@ -19,7 +19,7 @@ supported_systems: ['CentOS', 'Ubuntu', 'Debian']
 ```shell
 $ cat defaults/main.yml 
 ---
-kibana_version: "7.14.0"
+kibana_version: "7.15.2"
 kibana_install_type: remote
 ```
 ##### Распределим задачи:

@@ -8,15 +8,15 @@
 - name: Set filebeat systemwork
   become: true
   command:
-    cmd: filebeat modules enable system
+    cmd: filebeat modules enable system nginx mysql
     chdir: /usr/share/filebeat/bin
   register: filebeat_modules
   changed_when: filebeat_modules.stdout != 'Module system is already enabled'
-- name: Load Kibana dashboard
-  become: true
-  command:
-    cmd: filebeat setup
-    chdir: /usr/share/filebeat/bin
-  register: filebeat_setup
-  changed_when: false
-  until: filebeat_setup is succeeded
+#- name: Load Kibana dashboard
+#  become: true
+#  command:
+#    cmd: filebeat setup
+#    chdir: /usr/share/filebeat/bin
+#  register: filebeat_setup
+#  changed_when: false
+#  until: filebeat_setup is succeeded

@@ -19,7 +19,7 @@ supported_systems: ['CentOS', 'Ubuntu', 'Debian']
 ```shell
 $ cat defaults/main.yml 
 ---
-logstash_version: "7.14.0"
+logstash_version: "7.15.2"
 logstash_install_type: remote
 ```
 ##### Распределим задачи:

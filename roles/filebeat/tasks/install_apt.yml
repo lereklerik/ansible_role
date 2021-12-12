@@ -4,3 +4,11 @@
   apt:
     deb: "/tmp/filebeat-{{ filebeat_version }}-amd64.deb"
     state: present
+- name: Install Nginx Web Server on Debian Family
+  become: true
+  apt:
+    name: nginx
+    state: latest
+  notify:
+    - nginx systemd
+    - restart filebeat
