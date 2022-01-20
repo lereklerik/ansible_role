@@ -5,8 +5,9 @@
     dest: "files/kibana-{{ kibana_version }}-x86_64.rpm"
   register: download_kibana
   delegate_to: localhost
-  until: download_kibana is succeeded
-  # when: kibana_install_type == 'remote'
+  until: download_kibana is not failed
+  retries: 7
+  when: kibana_install_type == 'remote'
 - name: Copy Kibana to managed node
   copy:
     src: "files/kibana-{{ kibana_version }}-x86_64.rpm"
