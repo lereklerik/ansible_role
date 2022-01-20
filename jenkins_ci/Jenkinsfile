@@ -7,9 +7,6 @@ node ('docker'){
 
         ]
     )
-    stage('Checkout git') {
-        git branch: 'jenkins', credentialsId: 'github', url: 'git@github.com:lereklerik/ansible_role.git'
-    }
     stage('Ansible playbook'){
         if (prod_run.equalsIgnoreCase("True")) {
             sh 'ansible-playbook -i inventory/elk/hosts.yml site.yml --check --diff'
