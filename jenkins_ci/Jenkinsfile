@@ -9,9 +9,9 @@ node ('docker'){
     )
     stage('Ansible playbook'){
         if (prod_run.equalsIgnoreCase("True")) {
-            sh 'ansible-playbook -i inventory/elk/hosts.yml site.yml --check --diff'
+            sh 'ansible-playbook -i inventory/elk/ site.yml --check --diff'
         } else {
-            sh 'ansible-playbook -i inventory/elk/hosts.yml site.yml'
+            sh 'ansible-playbook -i inventory/elk/ site.yml'
         }
     } 
 }
