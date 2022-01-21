@@ -1,6 +1,6 @@
 ---
 - name: Install Elasticsearch
-  become: true
+  # become: true
   yum:
     name: "/tmp/elasticsearch-{{ elasticsearch_version }}-x86_64.rpm"
     state: present

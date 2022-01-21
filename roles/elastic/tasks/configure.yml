@@ -1,6 +1,6 @@
 ---
 - name: Configure Elasticsearch
-  become: true
+  # become: true
   template:
     src: elasticsearch.yml.j2
     mode: 0644
