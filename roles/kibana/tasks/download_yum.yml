@@ -7,6 +7,7 @@
   delegate_to: localhost
   until: download_kibana is not failed
   retries: 7
+  ignore_errors: yes
   when: kibana_install_type == 'remote'
 - name: Copy Kibana to managed node
   copy:

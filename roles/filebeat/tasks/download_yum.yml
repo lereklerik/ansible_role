@@ -6,7 +6,8 @@
   register: download_filebeat
   delegate_to: localhost
   until: download_filebeat is not failed
-  retries: 7
+  retries: 10
+  ignore_errors: yes
   when: filebeat_install_type == 'remote'
 - name: Copy Filebeat to managed node
   copy:

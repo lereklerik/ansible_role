@@ -6,7 +6,8 @@
   register: download_elastic
   delegate_to: localhost
   until: download_elastic is not failed
-  retries: 7
+  retries: 10
+  ignore_errors: yes
   when: elastic_install_type == 'remote'
 - name: Copy Elasticsearch to managed node
   copy:
