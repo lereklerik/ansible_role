@@ -19,11 +19,11 @@ filebeat.inputs:
 
 {% if ansible_distribution == "CentOS" %}
 #output.elasticsearch:
-#  hosts: ["http://{{ hostvars['el-centos']['ansible_facts']['default_ipv4']['address'] }}:9200"]
+#  hosts: ["http://{{ hostvars['elk-centos']['ansible_facts']['default_ipv4']['address'] }}:9200"]
 output.logstash:
-  hosts: ["http://{{ hostvars['el-centos']['ansible_facts']['default_ipv4']['address'] }}:5044"]
+  hosts: ["http://{{ hostvars['elk-centos']['ansible_facts']['default_ipv4']['address'] }}:5044"]
 setup.kibana:
-  host: "http://{{ hostvars['k-centos']['ansible_facts']['default_ipv4']['address'] }}:5601"
+  host: "http://{{ hostvars['elk-centos']['ansible_facts']['default_ipv4']['address'] }}:5601"
 {% else %}
 #output.elasticsearch:
 #  hosts: ["http://{{ hostvars['el-deb']['ansible_facts']['default_ipv4']['address'] }}:9200"]

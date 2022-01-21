@@ -4,7 +4,6 @@ node ('docker'){
             parameters(
                 [string(defaultValue: 'False', name: 'prod_run')]
                 )
-
         ]
     )
     stage('Checkout git') {
