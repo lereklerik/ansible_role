@@ -6,7 +6,7 @@
     dest: /etc/filebeat/filebeat.yml
     mode: 0644
 - name: Set filebeat systemwork
-  become: true
+  # become: true
   command:
     cmd: filebeat modules enable system nginx mysql
     chdir: /usr/share/filebeat/bin
