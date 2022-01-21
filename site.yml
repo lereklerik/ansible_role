@@ -1,16 +1,16 @@
 ---
 - name: Work with elasticsearch-role
   hosts:
-    - local
+    - elk-centos
   roles:
     - elastic
 - name: Work with kibana-role
   hosts:
-    - local
+    - elk-centos
   roles:
     - kibana
 - name: Work with filebeat-role
   hosts:
-    - local
+    - elk-centos
   roles:
     - filebeat
